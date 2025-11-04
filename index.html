@@ -148,7 +148,12 @@
   <div class="socials">
     <a href="https://www.instagram.com/webstudioengine/?hl=en" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
   </div>
-  <br><br>
+  <br>
+  <div style="margin-top:.4rem">
+    <a href="mentions-legales.html" style="color:#d4b074; font-size:0.85rem; margin-right:.6rem;">Mentions légales</a> • 
+    <a href="confidentialite.html" style="color:#d4b074; font-size:0.85rem; margin-left:.6rem;">Politique de confidentialité</a>
+  </div>
+  <br>
   <small style="color:#94a3b8; font-size:0.8rem; display:block; max-width:700px; margin:auto; line-height:1.4;">
     Les informations envoyées via ce site sont utilisées uniquement pour répondre à votre demande.
     Aucune donnée n’est vendue, partagée ou utilisée à des fins commerciales.
@@ -166,10 +171,45 @@
     const message = form.message.value || "";
     const TO = "webstudioengine@gmail.com";
     const subject = "Demande de devis — Web Studio Engine";
-    const signature = "\n\n— Sabri\nWeb Studio Engine\nCréation de sites vitrines premium\nInstagram : @webstudioengine";
-    const body = `Nom : ${name}\nEmail : ${email}\n\nProjet :\n${message}${signature}`;
+    const signature = "
+
+— Sabri
+Web Studio Engine
+Création de sites vitrines premium
+Instagram : @webstudioengine";
+    const body = `Nom : ${name}
+Email : ${email}
+
+Projet :
+${message}${signature}`;
     window.location.href = `mailto:${TO}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
   }
+
+  // Bandeau cookies simple (technique)
+  (function(){
+    if(!localStorage.getItem("cookie_accept")){
+      const banner = document.createElement("div");
+      banner.style.position = "fixed";
+      banner.style.bottom = "0";
+      banner.style.left = "0";
+      banner.style.right = "0";
+      banner.style.background = "#111";
+      banner.style.color = "#fff";
+      banner.style.padding = "15px";
+      banner.style.textAlign = "center";
+      banner.style.fontSize = "14px";
+      banner.style.zIndex = "9999";
+      banner.innerHTML = `
+        Ce site utilise uniquement des cookies techniques. 
+        <button id="cookie-ok" style="margin-left:10px;padding:6px 12px;border:none;background:#d4b074;color:#000;border-radius:6px;cursor:pointer;">OK</button>
+      `;
+      document.body.appendChild(banner);
+      document.getElementById("cookie-ok").onclick = () => {
+        localStorage.setItem("cookie_accept","1");
+        banner.remove();
+      };
+    }
+  })();
 </script>
 </body>
 </html>
