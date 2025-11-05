@@ -1,74 +1,164 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>Web Studio Engine — Création de sites vitrines premium</title>
-  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="Création de sites vitrines modernes et professionnels. Web Studio Engine propose des solutions clé en main pour entreprises, coachs et restaurants.">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <!-- Icône Font Awesome -->
-  <script src="https://kit.fontawesome.com/a2e0e9f65a.js" crossorigin="anonymous"></script>
   <style>
     :root{ --bg:#020617; --gold:#d4b074; --text:#e2e8f0; --muted:#94a3b8; }
+
     *{box-sizing:border-box;margin:0;padding:0}
     html{scroll-behavior:smooth}
-    body{font-family:"Poppins",sans-serif;background:radial-gradient(circle at top,#0f172a 0%,#020617 60%);color:var(--text);line-height:1.6;overflow-x:hidden}
-    header{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(2,6,23,.85);backdrop-filter:blur(10px);border-bottom:1px solid rgba(212,176,116,.2)}
+    body{
+      font-family:"Poppins",sans-serif;
+      background:radial-gradient(circle at top,#0f172a 0%,#020617 60%);
+      color:var(--text);
+      line-height:1.6;
+      overflow-x:hidden;
+    }
+
+    /* Header */
+    header{
+      position:fixed; inset:0 0 auto 0; z-index:100;
+      background:rgba(2,6,23,.85); backdrop-filter:blur(10px);
+      border-bottom:1px solid rgba(212,176,116,.2);
+    }
     .nav{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:.8rem 1.2rem}
     .logo{display:flex;align-items:center;gap:.5rem;font-weight:600;cursor:pointer}
     .logo-badge{width:38px;height:38px;border-radius:999px;background:radial-gradient(circle at 20% 20%,#fde1b2 0%,#d4b074 35%,#9b6a2f 100%);display:grid;place-items:center;color:#020617;font-weight:700;font-size:.7rem}
     .menu{display:flex;gap:1rem}
-    .menu a{color:var(--muted);font-size:.9rem;text-decoration:none;cursor:pointer}
+    .menu a{color:var(--muted);font-size:.9rem;text-decoration:none}
     .menu a:hover,.menu a.active{color:#fff}
-    .btn-primary{background:linear-gradient(120deg,#d4b074 0%,#f1d6a0 50%,#d4b074 100%);color:#020617;border:none;border-radius:999px;padding:.55rem 1.35rem;font-weight:600;cursor:pointer;box-shadow:0 12px 30px rgba(212,176,116,.25);font-size:.85rem}
+
+    /* Buttons */
+    .btn-primary{
+      background:linear-gradient(120deg,#d4b074 0%,#f1d6a0 50%,#d4b074 100%);
+      color:#020617;border:none;border-radius:999px;
+      padding:.55rem 1.35rem;font-weight:600;cursor:pointer;font-size:.85rem;
+      box-shadow:0 12px 30px rgba(212,176,116,.25);
+    }
+    .btn-outline-gold{
+      background:transparent;color:var(--gold);
+      border:1.8px solid var(--gold); border-radius:999px;
+      padding:.55rem 1.35rem; font-weight:600; cursor:pointer; font-size:.85rem;
+      transition:.25s;
+    }
+    .btn-outline-gold:hover{background:rgba(212,176,116,.12); transform:translateY(-1px)}
+
+    /* Layout */
     section{padding:5rem 1.2rem 0;max-width:1200px;margin:auto}
     h1,h2{color:#fff;margin-bottom:.5rem}
     h1{font-size:2.4rem} h2{font-size:1.9rem}
-    p.subtitle{color:var(--muted);margin-bottom:2rem;max-width:600px}
-    .hero{min-height:90vh;background-image:linear-gradient(rgba(2,6,23,.85),rgba(2,6,23,.95)),url('https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1600&q=70');background-size:cover;background-position:center;display:flex;align-items:center;justify-content:center;text-align:center;padding:0 1rem;border-radius:0 0 80px 80px}
+    p.subtitle{color:var(--muted);margin-bottom:2rem;max-width:650px}
+
+    /* Hero */
+    .hero{
+      min-height:90vh;
+      background-image:
+        linear-gradient(rgba(2,6,23,.85),rgba(2,6,23,.95)),
+        url('https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1600&q=70');
+      background-size:cover; background-position:center;
+      display:flex; align-items:center; justify-content:center; text-align:center;
+      padding:0 1rem; border-radius:0 0 80px 80px;
+    }
     .hero-content{max-width:800px;padding-top:70px}
     .hero-content h1{font-size:2.8rem;margin-bottom:.8rem}
     .hero-content p{color:var(--muted);margin-bottom:1.2rem}
     .hero-buttons{display:flex;gap:.7rem;justify-content:center;flex-wrap:wrap}
+
+    /* Grid / cards */
     .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.5rem}
-    .card{background:rgba(3,7,26,.45);border:1px solid rgba(212,176,116,.25);border-radius:20px;padding:1.3rem 1.1rem 1.4rem;box-shadow:0 10px 30px rgba(0,0,0,.25);transition:.3s}
-    .card:hover{transform:translateY(-6px);box-shadow:0 20px 40px rgba(0,0,0,.35)}
-    .card h3{color:var(--gold);margin-bottom:.5rem;font-size:1.1rem}
-    .card p{color:var(--muted);font-size:.9rem;margin-bottom:.5rem}
+    .card{
+      background:rgba(3,7,26,.45);
+      border:1px solid rgba(212,176,116,.25);
+      border-radius:20px; padding:1.3rem;
+      box-shadow:0 10px 30px rgba(0,0,0,.25); transition:.3s;
+    }
+    .card:hover{transform:translateY(-6px); box-shadow:0 20px 40px rgba(0,0,0,.35)}
     .work-thumb{height:160px;background-size:cover;background-position:center;border-radius:14px;margin-bottom:.8rem}
+
     .price{font-size:2rem;font-weight:600;margin:.4rem 0 .8rem}
-    .from{color:var(--muted);font-size:.75rem;margin-bottom:.4rem;text-transform:uppercase;letter-spacing:.04em}
     ul.features{list-style:none;padding:0;margin:0 0 .7rem}
-    ul.features li{color:var(--muted);font-size:.85rem;margin-bottom:.4rem}
-    .testimonials{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.2rem}
-    .testimonial{background:rgba(3,7,26,.4);border:1px solid rgba(148,163,184,.12);border-radius:18px;padding:1.1rem 1rem 1.2rem;font-size:.9rem}
-    .testimonial strong{display:block;margin-top:.6rem;color:#fff;font-size:.85rem}
-    .note{color:#facc15;font-weight:600}
-    form{display:grid;grid-template-columns:1fr 1fr;gap:.9rem}
-    form .full{grid-column:1/-1}
-    input,textarea{width:100%;background:rgba(2,6,23,.3);border:1px solid rgba(148,163,184,.12);border-radius:14px;padding:.5rem .6rem;color:#fff;font-family:inherit}
-    textarea{min-height:110px}
-    .contact-box{background:radial-gradient(circle,rgba(212,176,116,.05),rgba(2,6,23,1));border:1px solid rgba(212,176,116,.25);border-radius:20px;padding:1.3rem 1.4rem 1.5rem;max-width:700px;margin:2.5rem auto}
-    footer{border-top:1px solid rgba(148,163,184,.09);margin-top:3rem;padding:2rem 1.2rem 2.5rem;text-align:center;color:var(--muted);background:rgba(2,6,23,1)}
+    ul.features li{color:var(--muted);font-size:.95rem;margin-bottom:.4rem}
+
+    /* ================= CONTACT (corrigé & forcé) ================= */
+    .contact-box{
+      position:relative;
+      max-width:900px;
+      margin:2.5rem auto;
+      padding:22px;
+      background:rgba(6,12,28,.55);
+      border:1px solid rgba(212,176,116,.18);
+      border-radius:20px;
+      box-shadow:inset 0 0 0 1px rgba(255,255,255,.03), 0 24px 50px rgba(0,0,0,.28);
+      overflow:hidden;
+    }
+    .contact-box::after{
+      content:""; position:absolute; inset:-40% -20% -60% -20%;
+      background:radial-gradient(360px 260px at 60% 30%, rgba(212,176,116,.10), rgba(2,6,23,0) 60%);
+      pointer-events:none;
+    }
+
+    /* >>> on cible directement les champs du bloc contact <<< */
+    .contact-box form{display:grid;gap:14px}
+    .contact-box input,
+    .contact-box textarea{
+      width:100%;
+      -webkit-appearance:none; appearance:none;
+      height:56px; /* grands champs */
+      padding:0 18px;
+      border-radius:14px;
+      border:1px solid rgba(212,176,116,.20);
+      background:rgba(255,255,255,0.05);
+      color:#fff; font-size:.95rem; font-family:inherit;
+      outline:none;
+      transition:border-color .2s, background .2s, box-shadow .2s;
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,.02);
+    }
+    .contact-box textarea{
+      height:170px;
+      padding:14px 18px;
+      resize:vertical;
+    }
+    .contact-box input::placeholder,
+    .contact-box textarea::placeholder{ color:#9aa3b8 }
+    .contact-box input:focus,
+    .contact-box textarea:focus{
+      border-color:var(--gold);
+      background:rgba(212,176,116,.08);
+      box-shadow:0 0 0 3px rgba(212,176,116,.12);
+    }
+    .contact-box .btn-primary{width:max-content}
+
+    /* Footer */
+    footer{text-align:center;margin-top:3rem;padding:2rem;color:var(--muted)}
     .socials{margin-top:1rem;display:flex;justify-content:center;gap:1rem}
-    .socials a{color:var(--gold);font-size:1.4rem;transition:.3s}
-    .socials a:hover{color:#fff;transform:scale(1.15)}
-    @media(max-width:960px){ .menu{display:none} form{grid-template-columns:1fr} .hero-content h1{font-size:2.2rem} section{padding-top:4.5rem} }
+    .socials img{width:34px;height:34px;transition:.3s;cursor:pointer}
+    .socials img:hover{transform:scale(1.2)}
+
+    @media (max-width:960px){
+      .menu{display:none}
+      .hero-content h1{font-size:2.2rem}
+      section{padding-top:4.5rem}
+      .contact-box{padding:18px}
+    }
   </style>
 </head>
 <body>
+
 <header>
   <div class="nav">
     <div class="logo" onclick="window.scrollTo({top:0,behavior:'smooth'})">
-      <div class="logo-badge">WSE</div>
-      Web Studio Engine
+      <div class="logo-badge">WSE</div> Web Studio Engine
     </div>
     <nav class="menu">
       <a href="#accueil" class="active">Accueil</a>
       <a href="#services">Services</a>
       <a href="#realisations">Réalisations</a>
       <a href="#tarifs">Tarifs</a>
-      <a href="#temoignages">Avis clients</a>
+      <a href="#temoignages">Types de sites</a>
       <a href="#contact">Contact</a>
     </nav>
     <button class="btn-primary" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Demander un devis</button>
@@ -90,12 +180,12 @@
   <h2>Nos services</h2>
   <p class="subtitle">Des solutions clé en main adaptées à chaque activité.</p>
   <div class="grid">
-    <div class="card"><h3>✨ Site vitrine</h3><p>Un site complet pour présenter votre activité.</p></div>
-    <div class="card"><h3>🍽️ Site restaurant</h3><p>Menu numérique, galerie photo et réservation.</p></div>
-    <div class="card"><h3>💆‍♀️ Site beauté & bien-être</h3><p>Prestations, avis clients et galerie élégante.</p></div>
-    <div class="card"><h3>🔧 Refonte</h3><p>Modernisation complète d’un ancien site.</p></div>
-    <div class="card"><h3>🚀 SEO & performance</h3><p>Optimisation pour Google et vitesse de chargement.</p></div>
-    <div class="card"><h3>🛠️ Maintenance</h3><p>Suivi, mises à jour et assistance technique.</p></div>
+    <div class="card"><div class="work-thumb" style="background-image:url('https://images.unsplash.com/photo-1605296867304-46d5465a13f1?auto=format&fit=crop&w=900&q=60')"></div><h3>✨ Site vitrine</h3><p>Un site complet pour présenter votre activité.</p></div>
+    <div class="card"><div class="work-thumb" style="background-image:url('https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=900&q=60')"></div><h3>🍽️ Site restaurant</h3><p>Menu numérique, galerie photo et réservation.</p></div>
+    <div class="card"><div class="work-thumb" style="background-image:url('https://images.unsplash.com/photo-1544161515-4ab6ce6db874?auto=format&fit=crop&w=900&q=60')"></div><h3>💆‍♀️ Site beauté & bien-être</h3><p>Prestations, avis clients et galerie élégante.</p></div>
+    <div class="card"><div class="work-thumb" style="background-image:url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=900&q=60')"></div><h3>🔧 Refonte</h3><p>Modernisation complète d’un ancien site.</p></div>
+    <div class="card"><div class="work-thumb" style="background-image:url('https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&w=900&q=60')"></div><h3>🚀 SEO & performance</h3><p>Optimisation pour Google et vitesse de chargement.</p></div>
+    <div class="card"><div class="work-thumb" style="background-image:url('https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=900&q=60')"></div><h3>🛠️ Maintenance</h3><p>Suivi, mises à jour et assistance technique.</p></div>
   </div>
 </section>
 
@@ -103,10 +193,10 @@
   <h2>Exemples de réalisations</h2>
   <p class="subtitle">Quelques sites que nous avons créés pour nos clients.</p>
   <div class="grid">
-    <div class="card"><div class="work-thumb" style="background-image:url('https://images.unsplash.com/photo-1605296867304-46d5465a13f1?auto=format&fit=crop&w=900&q=60')"></div><h3>Coach bien-être</h3><p>Design doux et apaisant, formulaire de contact intégré.</p></div>
-    <div class="card"><div class="work-thumb" style="background-image:url('https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=900&q=60')"></div><h3>Restaurant</h3><p>Menu QR code, galerie photos et horaires visibles.</p></div>
-    <div class="card"><div class="work-thumb" style="background-image:url('https://images.unsplash.com/photo-1544161515-4ab6ce6db874?auto=format&fit=crop&w=900&q=60')"></div><h3>Institut beauté</h3><p>Prestations, galerie photo, prise de RDV.</p></div>
-    <div class="card"><div class="work-thumb" style="background-image:url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=900&q=60')"></div><h3>Entreprise BTP</h3><p>Présentation, réalisations et formulaire de devis.</p></div>
+    <div class="card"><div class="work-thumb" style="background-image:url('https://images.unsplash.com/photo-1605296867304-46d5465a13f1?auto=format&fit=crop&w=900&q=60')"></div><h3>Coach bien-être</h3></div>
+    <div class="card"><div class="work-thumb" style="background-image:url('https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=900&q=60')"></div><h3>Restaurant</h3></div>
+    <div class="card"><div class="work-thumb" style="background-image:url('https://images.unsplash.com/photo-1544161515-4ab6ce6db874?auto=format&fit=crop&w=900&q=60')"></div><h3>Institut beauté</h3></div>
+    <div class="card"><div class="work-thumb" style="background-image:url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=900&q=60')"></div><h3>Entreprise BTP</h3></div>
   </div>
 </section>
 
@@ -114,31 +204,62 @@
   <h2>Nos offres</h2>
   <p class="subtitle">Des packs simples, transparents et prêts à vendre.</p>
   <div class="grid">
-    <div class="card"><h3>Pack Starter</h3><p>Pour petites entreprises</p><p class="from">À partir de</p><div class="price">349€</div><ul class="features"><li>✓ 1 page d’accueil</li><li>✓ Design moderne</li><li>✓ Formulaire de contact</li></ul><button class="btn-primary" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Vendre ce pack</button></div>
-    <div class="card" style="border-width:2px;"><h3>⭐ Pack Business</h3><p>Le plus demandé</p><p class="from">À partir de</p><div class="price">549€</div><ul class="features"><li>✓ 4 à 5 pages</li><li>✓ Responsive complet</li><li>✓ SEO de base</li><li>✓ Réseaux sociaux</li></ul><button class="btn-primary" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Vendre ce pack</button></div>
-    <div class="card"><h3>Pack Premium</h3><p>Animations + pages illimitées</p><p class="from">À partir de</p><div class="price">799€</div><ul class="features"><li>✓ Design sur mesure</li><li>✓ Section réalisations</li><li>✓ Assistance 1 mois</li></ul><button class="btn-primary" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Vendre ce pack</button></div>
+    <div class="card">
+      <h3>Pack Starter</h3>
+      <div class="price">349€</div>
+      <ul class="features">
+        <li>✓ Design moderne</li>
+        <li>✓ 1 page d’accueil</li>
+        <li>✓ Formulaire de contact</li>
+        <li>✓ Responsive complet</li>
+      </ul>
+      <button class="btn-outline-gold" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Achetez ce pack</button>
+    </div>
+    <div class="card" style="border-width:2px;">
+      <h3>⭐ Pack Business</h3>
+      <div class="price">549€</div>
+      <ul class="features">
+        <li>✓ 4 à 5 pages</li>
+        <li>✓ Responsive complet</li>
+        <li>✓ SEO de base</li>
+        <li>✓ Réseaux sociaux</li>
+      </ul>
+      <button class="btn-outline-gold" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Achetez ce pack</button>
+    </div>
+    <div class="card">
+      <h3>Pack Premium</h3>
+      <div class="price">799€</div>
+      <ul class="features">
+        <li>✓ Design sur mesure</li>
+        <li>✓ Section réalisations</li>
+        <li>✓ Assistance 1 mois</li>
+      </ul>
+      <button class="btn-outline-gold" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Achetez ce pack</button>
+    </div>
   </div>
 </section>
 
 <section id="temoignages">
-  <h2>Satisfaction clients</h2>
-  <p class="subtitle">Ils ont utilisé nos maquettes pour vendre leurs propres sites 👇</p>
-  <div class="testimonials">
-    <div class="testimonial">“J’ai présenté le modèle restaurant à mon client, il a signé direct. J’ai juste changé les couleurs !”<strong>— Inès, freelance web</strong><span class="note">★★★★★</span></div>
-    <div class="testimonial">“Rapide à livrer, propre, le formulaire marche. Parfait pour mes petits commerces.”<strong>— Sofiane, agence locale</strong><span class="note">★★★★★</span></div>
-    <div class="testimonial">“Le design fait vraiment pro, ça m’a aidé à augmenter mes prix.”<strong>— Lina, créatrice digitale</strong><span class="note">★★★★☆</span></div>
+  <h2>Types de sites que je peux créer</h2>
+  <p class="subtitle">4 exemples simples et efficaces.</p>
+  <div class="grid">
+    <div class="card"><div class="work-thumb" style="background-image:url('https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=900&q=60')"></div><h3>Restaurant / Sushi</h3></div>
+    <div class="card"><div class="work-thumb" style="background-image:url('https://images.unsplash.com/photo-1501594907352-04cda38ebc29?auto=format&fit=crop&w=900&q=60')"></div><h3>Agence d’architecture</h3></div>
+    <div class="card"><div class="work-thumb" style="background-image:url('https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&w=900&q=60')"></div><h3>Coach sportif</h3></div>
+    <div class="card"><div class="work-thumb" style="background-image:url('https://images.unsplash.com/photo-1519823551278-64ac92734fb1?auto=format&fit=crop&w=900&q=60')"></div><h3>Institut massages</h3></div>
   </div>
 </section>
 
 <section id="contact">
   <h2>Contact & Devis</h2>
   <p class="subtitle">Dis-nous ce que tu veux qu’on te crée, on te répond rapidement.</p>
+
   <div class="contact-box">
     <form onsubmit="sendMail(event)">
-      <div><input type="text" name="name" placeholder="Nom complet" required></div>
-      <div><input type="email" name="email" placeholder="Adresse email" required></div>
-      <div class="full"><textarea name="message" placeholder="Ex : site vitrine pour restaurant, 4 pages, couleurs bleu & beige..."></textarea></div>
-      <div class="full"><button class="btn-primary" type="submit">Envoyer</button></div>
+      <input type="text" name="name" placeholder="Nom complet" required>
+      <input type="email" name="email" placeholder="Adresse email" required>
+      <textarea name="message" placeholder="Ex : site vitrine pour restaurant, 4 pages, couleurs bleu & beige..."></textarea>
+      <button class="btn-primary" type="submit">Envoyer</button>
     </form>
   </div>
 </section>
@@ -146,70 +267,28 @@
 <footer>
   © <span id="year"></span> Web Studio Engine — Création de sites web premium.
   <div class="socials">
-    <a href="https://www.instagram.com/webstudioengine/?hl=en" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+    <a href="https://www.instagram.com/webstudioengine/" target="_blank" rel="noopener">
+      <img src="/assets/instagram.png" alt="Instagram">
+    </a>
   </div>
   <br>
-  <div style="margin-top:.4rem">
-    <a href="mentions-legales.html" style="color:#d4b074; font-size:0.85rem; margin-right:.6rem;">Mentions légales</a> • 
-    <a href="confidentialite.html" style="color:#d4b074; font-size:0.85rem; margin-left:.6rem;">Politique de confidentialité</a>
-  </div>
-  <br>
-  <small style="color:#94a3b8; font-size:0.8rem; display:block; max-width:700px; margin:auto; line-height:1.4;">
-    Les informations envoyées via ce site sont utilisées uniquement pour répondre à votre demande.
-    Aucune donnée n’est vendue, partagée ou utilisée à des fins commerciales.
-    Pour demander la suppression de vos informations : webstudioengine@gmail.com
-  </small>
+  <a href="/mentions-legales.html" style="color:#d4b074;">Mentions légales</a> • 
+  <a href="/confidentialite.html" style="color:#d4b074;">Politique de confidentialité</a>
 </footer>
 
-<script>document.getElementById('year').textContent = new Date().getFullYear();</script>
 <script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+
   function sendMail(e){
     e.preventDefault();
-    const form = e.target;
-    const name = form.name.value || "";
-    const email = form.email.value || "";
-    const message = form.message.value || "";
-    const TO = "webstudioengine@gmail.com";
-    const subject = "Demande de devis — Web Studio Engine";
-    const signature = "
-
-— Sabri
-Web Studio Engine
-Création de sites vitrines premium
-Instagram : @webstudioengine";
-    const body = `Nom : ${name}
-Email : ${email}
-
-Projet :
-${message}${signature}`;
-    window.location.href = `mailto:${TO}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    const f = e.target;
+    const name = f.name.value.trim();
+    const email = f.email.value.trim();
+    const message = f.message.value.trim();
+    const body = `Nom : ${name}\nEmail : ${email}\n\nProjet :\n${message}`;
+    window.location.href = `mailto:webstudioengine@gmail.com?subject=${encodeURIComponent('Demande de devis — Web Studio Engine')}&body=${encodeURIComponent(body)}`;
   }
-
-  // Bandeau cookies simple (technique)
-  (function(){
-    if(!localStorage.getItem("cookie_accept")){
-      const banner = document.createElement("div");
-      banner.style.position = "fixed";
-      banner.style.bottom = "0";
-      banner.style.left = "0";
-      banner.style.right = "0";
-      banner.style.background = "#111";
-      banner.style.color = "#fff";
-      banner.style.padding = "15px";
-      banner.style.textAlign = "center";
-      banner.style.fontSize = "14px";
-      banner.style.zIndex = "9999";
-      banner.innerHTML = `
-        Ce site utilise uniquement des cookies techniques. 
-        <button id="cookie-ok" style="margin-left:10px;padding:6px 12px;border:none;background:#d4b074;color:#000;border-radius:6px;cursor:pointer;">OK</button>
-      `;
-      document.body.appendChild(banner);
-      document.getElementById("cookie-ok").onclick = () => {
-        localStorage.setItem("cookie_accept","1");
-        banner.remove();
-      };
-    }
-  })();
 </script>
+
 </body>
 </html>
