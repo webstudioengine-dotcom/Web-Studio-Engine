@@ -6,13 +6,13 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="description" content="Création de sites vitrines modernes et professionnels. Web Studio Engine propose des solutions clé en main pour entreprises, coachs et restaurants.">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <!-- Icône Font Awesome -->
   <script src="https://kit.fontawesome.com/a2e0e9f65a.js" crossorigin="anonymous"></script>
   <style>
     :root{ --bg:#020617; --gold:#d4b074; --text:#e2e8f0; --muted:#94a3b8; }
     *{box-sizing:border-box;margin:0;padding:0}
     html{scroll-behavior:smooth}
     body{font-family:"Poppins",sans-serif;background:radial-gradient(circle at top,#0f172a 0%,#020617 60%);color:var(--text);line-height:1.6;overflow-x:hidden}
+
     header{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(2,6,23,.85);backdrop-filter:blur(10px);border-bottom:1px solid rgba(212,176,116,.2)}
     .nav{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:.8rem 1.2rem}
     .logo{display:flex;align-items:center;gap:.5rem;font-weight:600;cursor:pointer}
@@ -20,26 +20,16 @@
     .menu{display:flex;gap:1rem}
     .menu a{color:var(--muted);font-size:.9rem;text-decoration:none;cursor:pointer}
     .menu a:hover,.menu a.active{color:#fff}
+
     .btn-primary{background:linear-gradient(120deg,#d4b074 0%,#f1d6a0 50%,#d4b074 100%);color:#020617;border:none;border-radius:999px;padding:.55rem 1.35rem;font-weight:600;cursor:pointer;box-shadow:0 12px 30px rgba(212,176,116,.25);font-size:.85rem}
-    /* --- Nouveau: bouton encadré or --- */
-    .btn-outline-gold{
-      background:transparent;
-      color:var(--gold);
-      border:1.8px solid var(--gold);
-      border-radius:999px;
-      padding:.55rem 1.35rem;
-      font-weight:600;
-      cursor:pointer;
-      font-size:.85rem;
-      box-shadow:none;
-      transition:.25s;
-    }
+    .btn-outline-gold{background:transparent;color:var(--gold);border:1.8px solid var(--gold);border-radius:999px;padding:.55rem 1.35rem;font-weight:600;cursor:pointer;font-size:.85rem;transition:.25s}
     .btn-outline-gold:hover{background:rgba(212,176,116,.12);transform:translateY(-1px)}
 
     section{padding:5rem 1.2rem 0;max-width:1200px;margin:auto}
     h1,h2{color:#fff;margin-bottom:.5rem}
     h1{font-size:2.4rem} h2{font-size:1.9rem}
     p.subtitle{color:var(--muted);margin-bottom:2rem;max-width:600px}
+
     .hero{min-height:90vh;background-image:linear-gradient(rgba(2,6,23,.85),rgba(2,6,23,.95)),url('https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1600&q=70');background-size:cover;background-position:center;display:flex;align-items:center;justify-content:center;text-align:center;padding:0 1rem;border-radius:0 0 80px 80px}
     .hero-content{max-width:800px;padding-top:70px}
     .hero-content h1{font-size:2.8rem;margin-bottom:.8rem}
@@ -47,7 +37,7 @@
     .hero-buttons{display:flex;gap:.7rem;justify-content:center;flex-wrap:wrap}
 
     .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.5rem}
-    .card{background:rgba(3,7,26,.45);border:1px solid rgba(212,176,116,.25);border-radius:20px;padding:1.3rem 1.1rem 1.4rem;box-shadow:0 10px 30px rgba(0,0,0,.25);transition:.3s}
+    .card{background:rgba(3,7,26,.45);border:1px solid rgba(212,176,116,.25);border-radius:20px;padding:1.3rem 1.1rem 1.4rem;box-shadow:0 10px 30px rgba(0,0,0,.25);transition:.3s;text-decoration:none}
     .card:hover{transform:translateY(-6px);box-shadow:0 20px 40px rgba(0,0,0,.35)}
     .card h3{color:var(--gold);margin-bottom:.5rem;font-size:1.1rem}
     .card p{color:var(--muted);font-size:.9rem;margin-bottom:.5rem}
@@ -58,16 +48,31 @@
     ul.features{list-style:none;padding:0;margin:0 0 .7rem}
     ul.features li{color:var(--muted);font-size:.85rem;margin-bottom:.4rem}
 
+    /* Contact restauré */
     .contact-box{background:radial-gradient(circle,rgba(212,176,116,.05),rgba(2,6,23,1));border:1px solid rgba(212,176,116,.25);border-radius:20px;padding:1.3rem 1.4rem 1.5rem;max-width:700px;margin:2.5rem auto}
+    .contact-box form{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    .contact-box .full{grid-column:1/-1}
+    .contact-box input,.contact-box textarea{
+      width:100%;height:50px;border-radius:12px;border:1px solid rgba(212,176,116,.25);
+      background:rgba(255,255,255,.04);color:#fff;padding:0 14px;font-size:.95rem;outline:none;
+      transition:border-color .2s, box-shadow .2s, background .2s;
+    }
+    .contact-box textarea{height:150px;padding:12px 14px;resize:vertical}
+    .contact-box input::placeholder,.contact-box textarea::placeholder{color:#9aa3b8}
+    .contact-box input:focus,.contact-box textarea:focus{border-color:var(--gold);box-shadow:0 0 0 3px rgba(212,176,116,.12);background:rgba(212,176,116,.06)}
+    .contact-box .btn-primary{width:max-content}
+
     footer{border-top:1px solid rgba(148,163,184,.09);margin-top:3rem;padding:2rem 1.2rem 2.5rem;text-align:center;color:var(--muted);background:rgba(2,6,23,1)}
     .socials{margin-top:1rem;display:flex;justify-content:center;gap:1rem}
-    .socials a{color:var(--gold);font-size:2rem;transition:.3s} /* <-- agrandi (était 1.4rem) */
-    .socials a:hover{color:#fff;transform:scale(1.15)}
+    .socials a{display:inline-flex;align-items:center;justify-content:center;width:48px;height:48px;border-radius:12px}
+    .socials a svg{width:34px;height:34px;fill:currentColor;color:var(--gold);transition:.3s}
+    .socials a:hover svg{color:#fff;transform:scale(1.1)}
 
     @media(max-width:960px){
       .menu{display:none}
       .hero-content h1{font-size:2.2rem}
       section{padding-top:4.5rem}
+      .contact-box form{grid-template-columns:1fr}
     }
   </style>
 </head>
@@ -142,7 +147,6 @@
   <p class="subtitle">Des packs simples, transparents et prêts à vendre.</p>
 
   <div class="grid">
-    <!-- STARTER -->
     <div class="card">
       <h3>Pack Starter</h3>
       <p>Pour petites entreprises</p>
@@ -154,12 +158,9 @@
         <li>✓ Formulaire de contact</li>
         <li>✓ <strong>Responsive complet</strong></li>
       </ul>
-      <button class="btn-outline-gold" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">
-        Achetez ce pack
-      </button>
+      <button class="btn-outline-gold" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Achetez ce pack</button>
     </div>
 
-    <!-- BUSINESS -->
     <div class="card" style="border-width:2px;">
       <h3>⭐ Pack Business</h3>
       <p>Le plus demandé</p>
@@ -171,12 +172,9 @@
         <li>✓ SEO de base</li>
         <li>✓ Réseaux sociaux</li>
       </ul>
-      <button class="btn-outline-gold" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">
-        Achetez ce pack
-      </button>
+      <button class="btn-outline-gold" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Achetez ce pack</button>
     </div>
 
-    <!-- PREMIUM -->
     <div class="card">
       <h3>Pack Premium</h3>
       <p>Animations + pages illimitées</p>
@@ -187,43 +185,33 @@
         <li>✓ Section réalisations</li>
         <li>✓ Assistance 1 mois</li>
       </ul>
-      <button class="btn-outline-gold" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">
-        Achetez ce pack
-      </button>
+      <button class="btn-outline-gold" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Achetez ce pack</button>
     </div>
   </div>
 </section>
 
-<!-- Remplacement de l’ancienne section Avis clients -->
 <section id="temoignages">
   <h2>Types de sites que je peux créer</h2>
   <p class="subtitle">4 exemples simples et efficaces.</p>
-
   <div class="grid">
-    <!-- Restaurant / Sushi -->
-    <a class="card" href="#" style="text-decoration:none;">
+    <a class="card" href="#">
       <div class="work-thumb" style="background-image:url('https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=900&q=60')"></div>
       <h3>Restaurant / Sushi</h3>
       <p>Menu, galerie, horaires, réservation.</p>
     </a>
-
-    <!-- Agence d’architecture -->
-    <a class="card" href="#" style="text-decoration:none;">
+    <a class="card" href="#">
       <div class="work-thumb" style="background-image:url('https://images.unsplash.com/photo-1501594907352-04cda38ebc29?auto=format&fit=crop&w=900&q=60')"></div>
       <h3>Agence d’architecture</h3>
       <p>Projets, à propos, contact, portfolio.</p>
     </a>
-
-    <!-- Coach sportif -->
-    <a class="card" href="#" style="text-decoration:none;">
+    <a class="card" href="#">
       <div class="work-thumb" style="background-image:url('https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&w=900&q=60')"></div>
       <h3>Coach sportif</h3>
       <p>Programmes, réservations, témoignages.</p>
     </a>
-
-    <!-- Institut de massages (image remplacée) -->
-    <a class="card" href="#" style="text-decoration:none;">
-      <div class="work-thumb" style="background-image:url('https://images.unsplash.com/photo-1591634215489-d43debe9b053?auto=format&fit=crop&w=900&q=70')"></div>
+    <!-- 🔁 Institut de massages : URL fiabilisée -->
+    <a class="card" href="#">
+      <div class="work-thumb" style="background-image:url('https://images.unsplash.com/photo-1556228720-195a672e8a03?auto=format&fit=crop&w=900&q=70')"></div>
       <h3>Institut de massages</h3>
       <p>Soins, tarifs, prise de RDV.</p>
     </a>
@@ -246,7 +234,11 @@
 <footer>
   © <span id="year"></span> Web Studio Engine — Création de sites web premium.
   <div class="socials">
-    <a href="https://www.instagram.com/webstudioengine/?hl=en" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+    <a href="https://www.instagram.com/webstudioengine/" target="_blank" rel="noopener" aria-label="Instagram">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7zm5 3.5a5.5 5.5 0 1 1 0 11 5.5 5.5 0 0 1 0-11zm0 2a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7zm5.75-.9a1.15 1.15 0 1 1 0 2.3 1.15 1.15 0 0 1 0-2.3z"/>
+      </svg>
+    </a>
   </div>
   <br>
   <div style="margin-top:.4rem">
@@ -286,7 +278,6 @@ ${message}${signature}`;
     window.location.href = `mailto:${TO}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
   }
 
-  // Bandeau cookies simple (technique)
   (function(){
     if(!localStorage.getItem("cookie_accept")){
       const banner = document.createElement("div");
